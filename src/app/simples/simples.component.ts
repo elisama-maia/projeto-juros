@@ -7,29 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimplesComponent implements OnInit {
 
-  constructor() { }
-
-  valor:number = undefined;
-  taxa:number = undefined;
-  periodo:number = undefined;
+  valor:number;
+  taxa:number;
+  periodo:number;
   juros:number = undefined;
-  total:number = 0;
+  totaljuros:number = undefined;
+  valortotal:number = undefined;
+
+  constructor() { 
+    this.valor = 2000;
+    this.taxa = 5;
+    this.periodo = 4;
+  }
 
   ngOnInit() {
   }
 
   jurosSimples(){
     let list: number[] = [];
+    this.totaljuros = this.valor * this.taxa / 100 * this.periodo;
+    this.valortotal = this.valor + this.totaljuros
     for(let i = 1; i<=this.periodo; i++){
       this.juros = this.valor * this.taxa/100;
       list.push(this.juros);
     }
     return list;
-  }
-
-  jurosSimplesT() {
-    this.total = this.valor * this.taxa / 100 * this.periodo;
-    return this.total;
   }
   
 }
